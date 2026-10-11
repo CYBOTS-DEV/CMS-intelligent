@@ -4,11 +4,22 @@ import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import Dashboard from './components/Dashboard'
 import  Toasts  from './Toasts'
+import { useState } from 'react'
 
 function App() {
-  return (
+    const [message, setMessage] = useState('')
+    const showSuccess = () => {
+        setMessage('Page enregistrée avec succès !')
+    }
+    return (
       <>
-        <Toasts message={"welcome to cms intelligent"} type="success" />
+          {message && (
+              <Toasts
+                  key={message}
+                  message={message}
+                  type="success"
+              />
+          )}
 
         <div className="min-h-screen bg-slate-50">
           <Header />
@@ -18,6 +29,12 @@ function App() {
 
             <main className="flex-1 p-8">
               <Dashboard />
+                <button
+                    onClick={showSuccess}
+                    className="mt-4 rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700"
+                >
+                    Tester une notification
+                </button>
             </main>
           </div>
         </div>
