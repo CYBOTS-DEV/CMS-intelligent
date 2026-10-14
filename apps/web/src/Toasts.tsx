@@ -9,12 +9,13 @@ type ToastProps = {
 function Toasts({ message, type = "info" }: ToastProps) {
     const [visible, setVisible] = useState(true);
     useEffect(() => {
+        setVisible(true);
         const timer = setTimeout(() => {
             setVisible(false);
         }, 3000);
 
         return () => clearTimeout(timer);
-    }, []);
+    }, [message,type]);
     const styles = {
         success: "border-green-200 bg-green-50 text-green-700",
         error: "border-red-200 bg-red-50 text-red-700",

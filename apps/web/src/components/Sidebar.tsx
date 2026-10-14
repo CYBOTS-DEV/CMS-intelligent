@@ -1,5 +1,5 @@
 function Sidebar() {return (
-    <aside className="w-60 min-h-screen shrink-0 border-r border-slate-200 bg-white p-4">
+    <aside className="w-60 min-h-screen shrink-0 border-l border-slate-200 bg-white p-4">
         <nav>
             <ul className="space-y-2">
                 <li>
