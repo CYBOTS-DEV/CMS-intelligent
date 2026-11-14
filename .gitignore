@@ -18,5 +18,9 @@ build/
 .DS_Store
 Thumbs.db
 
+#Build files
+dist/
+
+
 # Logs
 *.log

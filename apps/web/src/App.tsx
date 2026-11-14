@@ -11,7 +11,9 @@ type ToastType = 'success' | 'error' | 'info'
 function App() {
     const [toastId, setToastId] = useState(0)
     const [toastType, setToastType] = useState<ToastType>('success')
-
+    const createPage = () =>{
+        showToast('success')
+    }
     const showToast = (type: ToastType) => {
         setToastType(type)
         setToastId((id) => id + 1)
@@ -26,18 +28,20 @@ function App() {
     return (
         <div className="min-h-screen bg-slate-50">
             {toastId > 0 && (
-                <Toasts
-                    key={toastId}
-                    message={messages[toastType]}
-                    type={toastType}
-                />
+                <div className="fixed right-4 top-4 z-50 w-[calc(100%-2rem)] max-w-sm">
+                    <Toasts
+                        key={toastId}
+                        message={messages[toastType]}
+                        type={toastType}
+                    />
+                </div>
             )}
 
             <Header />
 
             <div className="flex">
                 <main className="flex-1 p-8">
-                    <Dashboard />
+                    <Dashboard onCreatePage={createPage} />
 
                     <div className="mt-4 flex flex-wrap gap-3">
                         <button
